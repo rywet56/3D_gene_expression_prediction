@@ -6,7 +6,7 @@ import pandas as pd
 
 def load_scDGE(dge_path):
     # load DGE
-    dge = pd.read_csv(filepath_or_buffer=dge_path, sep=',')
+    dge = pd.read_csv(filepath_or_buffer=dge_path, sep=',', index_col=0)
     # get gene names (rows)
     gene_names = list(dge.index)
     gene_names = np.array(gene_names)

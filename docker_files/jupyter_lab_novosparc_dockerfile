@@ -1,0 +1,46 @@
+# get the docker image
+FROM jupyter/scipy-notebook
+
+# replace already existing config file so that one can log in without password
+ADD jupyter_notebook_config.py /home/jovyan/.jupyter
+
+# install PyTorch
+# RUN pip3 install torch torchvision
+
+# install novosparc
+RUN pip install novosparc
+
+# install plotly
+RUN pip install kaleido 
+RUN pip install plotly==5.4.0
+
+USER root
+ 
+# install R
+RUN apt update
+RUN apt install -y dirmngr gnupg apt-transport-https ca-certificates software-properties-common
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+RUN add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-cran40/'
+RUN apt install -y r-base
+RUN apt install -y build-essential
+
+# install Rscript to run .r scripts with bash (needed to install R libraries in next step)
+RUN apt install -y littler
+
+# install R libraries
+# add the file install_r_libraries.r in pwd to dir /usr/local/bin/ of docker container
+ADD install_r_libraries.r /usr/local/bin/
+# make this file executable
+RUN chmod +x /usr/local/bin/install_r_libraries.r
+# change the user
+USER jovyan
+# execute this file to install all R libraries needed
+RUN /usr/local/bin/install_r_libraries.r
+
+# set entry directory
+WORKDIR "/home/jovyan/storage"
+
+# ENV JUPYTER_ENABLE_LAB=yes
+
+
+

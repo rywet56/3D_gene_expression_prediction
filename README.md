@@ -29,19 +29,21 @@ If pre_mode = "expr_pre", this option can be used to not only select cells in th
 Setting this parameter to a list of TAIR IDs allows the user to remove genes from the spatial gene expression dataset. The removed reference genes will not be used in the cell-to-cell mapping and prediction of 3D gene expression profiles. This may be useful if the user wants to screen the effect of gene removal from the spatial reference dataset on gene expression prediction performance.  
 
 ``` num_neighbors_source ```  
+The number of nearest neighbors (cells) that should be considered for constructing a nearest neighbor graph of the cells in the scRNA-seq based on gene expression. If this number is small, the nearest neighbor graph describes more the local structure of cells instead of the global structure of cells.  
 
 ``` num_neighbors_target ```  
+The number of nearest neighbors (cells) that should be considered for constructing a nearest neighbor graph of the cells in the spatial expression dataset based on their positional information. If this number is small, the nearest neighbor graph describes more the local structure of cells instead of the global structure of cells.
 
-``` alpha ```  
+``` alpha = 0.1 ```  
 This parameter expresses how much the cell-to-cell mapping (and therefore the 3D gene expression prediction) should be driven by either the information about the spatial position or the reference gene expression of cells in the spatial reference dataset. A value of 0 uses only information from the spatial position of cells to perform the cell-to-cell mapping between cells in the scRNA-seq dataset to cells in the spatial expression dataset. Setting alpha to 1, uses only the information about the gene expression of marker genes to obtain cell-to-cell mappings. A value for alpha of 0.5 balances those two sources of information.  
 
 ``` epsilon = 0.05 ```  
-A regularization constant.
+A regularization constant. The larger this value, the lower the reconstruction performance.
 
 ``` max_iter = 500```  
-The maximum number of iterations of the underlying OT-based reconstruction algorithm.  
+The maximum number of iterations of the underlying OT-based reconstruction algorithm. The larger this value, the longer the alogrithm takes to converge.
 
 ``` tol = 1e-9```  
-The tolerance for termination of the underlying OT-based reconstruction algorithm.
+The tolerance for termination of the underlying OT-based reconstruction algorithm. The smaller this value, the longer the alogrithm takes to converge.  
 
 

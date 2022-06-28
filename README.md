@@ -1,5 +1,11 @@
 # 3D_gene_expression_prediction
 
+### Enviornment Setup
+
+### Predicting 3D gene expression profiles
+
+### Predicting cell-to-cell mappings
+
 ### Parameters
 ``` verbose = True # or False ```  
 Whether to print messages about the progress of the reconstruction.
@@ -27,12 +33,15 @@ Setting this parameter to a list of TAIR IDs allows the user to remove genes fro
 ``` num_neighbors_target ```  
 
 ``` alpha ```  
+This parameter expresses how much the cell-to-cell mapping (and therefore the 3D gene expression prediction) should be driven by either the information about the spatial position or the reference gene expression of cells in the spatial reference dataset. A value of 0 uses only information from the spatial position of cells to perform the cell-to-cell mapping between cells in the scRNA-seq dataset to cells in the spatial expression dataset. Setting alpha to 1, uses only the information about the gene expression of marker genes to obtain cell-to-cell mappings. A value for alpha of 0.5 balances those two sources of information.  
 
-``` epsilon ```  
+``` epsilon = 0.05 ```  
+A regularization constant.
 
-``` max_iter ```
+``` max_iter = 500```  
+The maximum number of iterations of the underlying OT-based reconstruction algorithm.  
 
-``` tol ```
-
+``` tol = 1e-9```  
+The tolerance for termination of the underlying OT-based reconstruction algorithm.
 
 

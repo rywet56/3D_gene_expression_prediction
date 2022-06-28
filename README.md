@@ -1,7 +1,7 @@
 # 3D_gene_expression_prediction
 
 ### Parameters
-verbose=True
+verbose=True  
 --> whether to print messages about the progress of the reconstruction
 
 keep_genes=["AT2G17950", "AT2G27250"]  

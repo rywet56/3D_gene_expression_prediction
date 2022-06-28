@@ -20,13 +20,19 @@ The number of cells in which a gene has be expressed in the scRNA-seq DGE in ord
 If pre_mode = "expr_pre", this option can be used to not only select cells in the scRNA-seq dataset, but also to enrich some of those selected cells in such a way that the scRNA-seq dataset best represents the composition of the cells in the spatial expression dataset.  
 
 ``` genes_remove_list = [] ```  
+Setting this parameter to a list of TAIR IDs allows the user to remove genes from the spatial gene expression dataset. The removed reference genes will not be used in the cell-to-cell mapping and prediction of 3D gene expression profiles. This may be useful if the user wants to screen the effect of gene removal from the spatial reference dataset on gene expression prediction performance.  
+
+``` num_neighbors_source ```  
+
+``` num_neighbors_target ```  
+
+``` alpha ```  
+
+``` epsilon ```  
+
+``` max_iter ```
+
+``` tol ```
 
 
 
-num_neighbors_source
-num_neighbors_target
-alpha
-epsilon
-
-max_iter
-tol

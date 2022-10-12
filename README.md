@@ -1,6 +1,28 @@
 # 3D_gene_expression_prediction
 
-### Enviornment Setup
+### I Enviornment Setup
+#### 1) Set working directory and download scripts
+```
+$ working_dir=~
+$ export working_dir
+$ cd $working_dir
+$ sudo apt-get update
+$ sudo apt-get install -y git-all
+$ git clone https://github.com/rywet56/3D_gene_expression_prediction.git
+```
+#### 2) Install docker
+```
+$ cd $working_dir/3D_gene_expression_prediction/env_setup
+$ bash install_docker.sh
+```
+#### 3) Build the JupyterLab docker image
+```
+$ bash build_docker_image.sh
+```
+#### 4) Start the JupyterLab docker image
+```
+$ bash start_docker_container.sh
+```
 
 ### Predicting 3D gene expression profiles
 
